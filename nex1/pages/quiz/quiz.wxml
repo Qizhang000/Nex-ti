@@ -1,0 +1,60 @@
+<view class="page">
+  <view class="container">
+    <view class="card">
+      <view class="title">偶像人格匹配测试</view>
+      <view class="subtitle">NEXZ（粉丝爱称“呐”）是 JYP 娱乐与日本索尼音乐合作推出的七人男团，以舞台实力与成员化学反应闻名。根据 20 道题，匹配你最接近的成员气质（娱乐参考）。</view>
+
+      <view wx:if="{{!showResult}}" class="quiz-area">
+        <view class="meta">
+          <text class="progress-text">第 {{currentIndex + 1}} 题 / 共 {{questions.length}} 题</text>
+          <view class="progress">
+            <view class="progress-bar" style="width: {{progress}}%;"></view>
+          </view>
+        </view>
+
+        <view class="question-title">{{currentQuestion.text}}</view>
+
+        <view class="options">
+          <button class="option-btn" data-index="0" bindtap="answerQuestion">
+            A. {{currentQuestion.options[0].text}}
+          </button>
+          <button class="option-btn" data-index="1" bindtap="answerQuestion">
+            B. {{currentQuestion.options[1].text}}
+          </button>
+        </view>
+
+        <view class="actions">
+          <button class="secondary-btn" bindtap="goToPreviousQuestion" disabled="{{currentIndex === 0}}">
+            上一题
+          </button>
+        </view>
+      </view>
+
+      <view wx:if="{{showResult}}" class="result-area">
+        <view class="result-block hero-block">
+          <view class="block-label">MATCH RESULT</view>
+          <view class="result-title">你的匹配结果是：{{resultRole.name}}</view>
+          <view class="result-desc">{{resultDescription}}</view>
+        </view>
+
+        <view class="result-block">
+          <view class="block-label">RADAR CHART</view>
+          <view class="section-title">结果维度图</view>
+          <canvas class="radar-canvas" canvas-id="radarCanvas"></canvas>
+        </view>
+
+        <view class="result-block">
+          <view class="block-label">DIMENSION</view>
+          <view class="section-title">性格维度概览</view>
+          <view class="breakdown">
+            <block wx:for="{{dimensionBreakdown}}" wx:key="*this">
+              <view>{{item}}</view>
+            </block>
+          </view>
+        </view>
+
+        <button class="primary-btn" bindtap="resetQuiz">重新测试</button>
+      </view>
+    </view>
+  </view>
+</view>

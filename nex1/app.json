@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/quiz/quiz"
+  ],
+  "window": {
+    "navigationBarTitleText": "偶像人格匹配测试",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundTextStyle": "light"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
